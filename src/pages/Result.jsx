@@ -1,8 +1,11 @@
 import React from 'react'
+import ResultSection from '../components/ResultSection'
 
 const Result = () => {
   return (
-    <div>Result</div>
+    <>
+      <ResultSection />
+    </>
   )
 }
 
