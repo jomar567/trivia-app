@@ -17,6 +17,11 @@ module.exports = {
           '2xl': '6rem',
         },
       },
+      colors: {
+        'green': '#4FBD1B',
+        'orange': '#E04E10',
+        'red': '#E33131'
+      }
     },
   },
   plugins: [],
