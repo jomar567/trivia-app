@@ -5,7 +5,7 @@ import { HiOutlineXMark } from 'react-icons/hi2'
 const ResultSection = () => {
   return (
     <section className='relative'>
-      <span class="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
+      <span className="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
       <div className=' min-h-screen flex items-center justify-center py-10 px-4'>
         <div className="z-10 bg-white w-full max-w-xl md:px-8 p-4 rounded-md">
           <div className='relative flex justify-center border-b border-b-gray-200 items-center mb-10 py-4 '>

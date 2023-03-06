@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const HomeSection = () => {
   return (
     <section className='relative'>
-      <span class="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
+      <span className="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
       <div className=' min-h-screen flex items-center justify-center py-10 px-4'>
         <div className="z-10 bg-white w-full max-w-xl md:px-8 py-14 rounded-md">
           <img src={require('../assets/img/zeniark-logo.png')} alt="Logo" className='mb-10 md:w-60 w-48 h-auto block mx-auto' />
