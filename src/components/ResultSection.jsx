@@ -1,6 +1,7 @@
 import React from 'react'
 import { HiOutlineCheck } from 'react-icons/hi'
 import { HiOutlineXMark } from 'react-icons/hi2'
+import { NavLink } from 'react-router-dom'
 
 const ResultSection = () => {
   return (
@@ -20,13 +21,14 @@ const ResultSection = () => {
             <p className='text-xl'>Your Score</p>
           </div>
 
-          <ol className='list-decimal py-4 px-3 marker:text-gray-400'>
+          <ol className='list-decimal py-4 px-3 marker:text-gray-400 mb-8'>
             <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
               <div className='flex justify-between items-center'>
                 <p className=' leading-6 text-sm'>
                   Peyton Manning retired after winning Super Bowl XLIX.
                   <span className=' italic font-light block text-gray-400 text-xs'>
-                    The correct answer is False. You answered False.
+                    The correct answer is <span className='font-semibold text-orange'>False</span>.
+                    You answered <span className='font-light text-orange'>False</span>.
                   </span>
                 </p>
                 <HiOutlineCheck className='text-2xl text-green' />
@@ -37,13 +39,17 @@ const ResultSection = () => {
                 <p className=' leading-6 text-sm'>
                   Peyton Manning retired after winning Super Bowl XLIX.
                   <span className=' italic font-light block text-gray-400 text-xs'>
-                    The correct answer is False. You answered False.
+                    The correct answer is <span className='font-semibold text-green'>True</span>.
+                    You answered <span className='font-light text-orange'>False</span>.
                   </span>
                 </p>
                 <HiOutlineXMark className='text-2xl text-red font-bold' />
               </div>
             </li>
           </ol>
+          <NavLink to="/quiz" className="text-xl underline text-blue-900 font-semibold text-center">
+             <h1 className="text-center">PLAY AGAIN</h1>
+          </NavLink>
         </div>
       </div>
     </section>
