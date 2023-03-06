@@ -1,4 +1,6 @@
 import React from 'react'
+import { HiOutlineCheck } from 'react-icons/hi'
+import { HiOutlineXMark } from 'react-icons/hi2'
 
 const ResultSection = () => {
   return (
@@ -27,7 +29,7 @@ const ResultSection = () => {
                     The correct answer is False. You answered False.
                   </span>
                 </p>
-                <p>check</p>
+                <HiOutlineCheck className='text-2xl text-green' />
               </div>
             </li>
             <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
@@ -38,7 +40,7 @@ const ResultSection = () => {
                     The correct answer is False. You answered False.
                   </span>
                 </p>
-                <p>check</p>
+                <HiOutlineXMark className='text-2xl text-red font-bold' />
               </div>
             </li>
           </ol>
