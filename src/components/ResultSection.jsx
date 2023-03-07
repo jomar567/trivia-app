@@ -7,6 +7,17 @@ const ResultSection = () => {
   const {state} = useLocation();
   const score = state ? state.score : 0
 
+   // Retrieve the user's answers from localStorage
+   const userAnswers = [];
+   for (let i = 0; i < 10; i++) {
+     const answer = localStorage.getItem(`answer_${i}`);
+     console.log(answer)
+     if (answer) {
+       userAnswers.push(JSON.parse(answer));
+       console.log(userAnswers)
+     }
+   }
+
 
   return (
     <section className='relative'>
@@ -26,7 +37,15 @@ const ResultSection = () => {
           </div>
 
           <ol className='list-decimal py-4 px-3 marker:text-gray-400 mb-8'>
-            <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
+            {userAnswers.map((answer, index) => (
+            <li key={index}>
+              <p>{answer.question}</p>
+              <p>{answer.answer}</p>
+              <p>{answer.isCorrect ? 'Correct' : 'Incorrect'}</p>
+            </li>
+          ))}
+
+            {/* <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
               <div className='flex justify-between items-center'>
                 <p className=' leading-6 text-sm'>
                   Peyton Manning retired after winning Super Bowl XLIX.
@@ -49,7 +68,7 @@ const ResultSection = () => {
                 </p>
                 <HiOutlineXMark className='text-2xl text-red font-bold' />
               </div>
-            </li>
+            </li> */}
           </ol>
           <NavLink to="/quiz" className="text-xl underline text-blue-900 font-semibold text-center">
              <h1 className="text-center">PLAY AGAIN</h1>
