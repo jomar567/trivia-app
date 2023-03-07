@@ -26,6 +26,7 @@ const QuizSection = () => {
   function handleAnswer(answer) {
     // Check if the user's answer is correct and update the score
     const isCorrect = answer === questions.results[questionIndices[currentQuestionIndex]].correct_answer;
+    const correctAnswer = questions.results[questionIndices[currentQuestionIndex]].correct_answer;
     if (isCorrect) {
       setScore(score + 1);
     }
@@ -36,6 +37,7 @@ const QuizSection = () => {
     localStorage.setItem(`answer_${currentQuestionIndex}`, JSON.stringify({
       question: question,
       answer: answer,
+      correct_answer: correctAnswer,
       isCorrect: isCorrect
     }));
 

@@ -41,6 +41,7 @@ const ResultSection = () => {
             <li key={index}>
               <p>{answer.question}</p>
               <p>{answer.answer}</p>
+              <p>{answer.correct_answer}</p>
               <p>{answer.isCorrect ? 'Correct' : 'Incorrect'}</p>
             </li>
           ))} */}
@@ -52,7 +53,7 @@ const ResultSection = () => {
                   <span className=' italic font-light block text-gray-400 text-xs'>
                     The correct answer is
                     {
-                      answer.isCorrect === false
+                      answer.correct_answer === 'True'
                       ?
                       <span className='font-semibold text-green'> True</span>
 
