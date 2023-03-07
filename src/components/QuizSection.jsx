@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const QuizSection = () => {
   const [questionIndices, setQuestionIndices] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState();
+  const [score, setScore] = useState(0);
 
   const navigate = useNavigate()
 
@@ -23,12 +24,19 @@ const QuizSection = () => {
   }, []);
 
   function handleAnswer(answer) {
+    // Check if the user's answer is correct and update the score
+    const isCorrect = answer === questions.results[questionIndices[currentQuestionIndex]].correct_answer;
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
     // Store the user's answer in localStorage
     const questionIndex = questionIndices[currentQuestionIndex];
     const question = questions.results[questionIndex].question;
     localStorage.setItem(`answer_${currentQuestionIndex}`, JSON.stringify({
       question: question,
-      answer: answer
+      answer: answer,
+      isCorrect: isCorrect
     }));
 
     // After the user has answered, move on to the next question
@@ -36,7 +44,7 @@ const QuizSection = () => {
     if (nextIndex < 10) {
       setCurrentQuestionIndex(nextIndex);
     } else {
-      navigate('/result')
+      navigate('/result', {state: {score}})
     }
   }
 

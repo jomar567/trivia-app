@@ -1,9 +1,13 @@
 import React from 'react'
 import { HiOutlineCheck } from 'react-icons/hi'
 import { HiOutlineXMark } from 'react-icons/hi2'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation  } from 'react-router-dom'
 
 const ResultSection = () => {
+  const {state} = useLocation();
+  const score = state ? state.score : 0
+
+
   return (
     <section className='relative'>
       <span className="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
@@ -16,7 +20,7 @@ const ResultSection = () => {
 
           <div className="flex flex-col justify-center text-center pb-6 border-b border-b-gray-200">
             <h1 className='md:text-3xl text-2xl font-semibold text-center md:px-24'>
-                3/10
+                {score}/10
             </h1>
             <p className='text-xl'>Your Score</p>
           </div>
