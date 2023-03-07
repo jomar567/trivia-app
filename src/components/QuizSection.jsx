@@ -67,6 +67,7 @@ const QuizSection = () => {
             <div className="z-10 bg-white w-full max-w-xl md:px-8 p-4 rounded-md">
               <div className='flex md:justify-between md:flex-row flex-col justify-center border-b border-b-gray-200 items-center mb-10 pb-4'>
                 <div className='flex items-center'>
+                  <img src={require('../assets/img/logo.png')} className=" w-8 mr-2" alt="" />
                   <p className='text-lg font-semibold text'>Category: {currentQuestion.category}</p>
                 </div>
                 <span className='text-sm font-medium'>
