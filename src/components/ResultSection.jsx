@@ -37,38 +37,54 @@ const ResultSection = () => {
           </div>
 
           <ol className='list-decimal py-4 px-3 marker:text-gray-400 mb-8'>
-            {userAnswers.map((answer, index) => (
+            {/* {userAnswers.map((answer, index) => (
             <li key={index}>
               <p>{answer.question}</p>
               <p>{answer.answer}</p>
               <p>{answer.isCorrect ? 'Correct' : 'Incorrect'}</p>
             </li>
-          ))}
-
-            {/* <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
-              <div className='flex justify-between items-center'>
-                <p className=' leading-6 text-sm'>
-                  Peyton Manning retired after winning Super Bowl XLIX.
+          ))} */}
+           {userAnswers.map((answer, index) => (
+            <li key={index} className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
+              <div className='flex justify-between items-center gap-4'>
+                <p className=' leading-6 md:text-sm text-xs'>
+                  {answer.question}
                   <span className=' italic font-light block text-gray-400 text-xs'>
-                    The correct answer is <span className='font-semibold text-orange'>False</span>.
-                    You answered <span className='font-light text-orange'>False</span>.
+                    The correct answer is
+                    {
+                      answer.isCorrect === false
+                      ?
+                      <span className='font-semibold text-green'> True</span>
+
+                      :
+                      <span className='font-semibold text-orange'> False</span>
+                    }.
+
+                    You answered
+                    {
+                      answer.answer === 'True'
+                      ?
+                      <span className='font-semibold text-green'> True</span>
+                      :
+
+                        <span className='font-semibold text-orange'> False</span>
+                    }
                   </span>
                 </p>
-                <HiOutlineCheck className='text-2xl text-green' />
+                {
+                  answer.isCorrect === true
+                  ?
+                    <p>
+                      <HiOutlineCheck className='text-2xl text-green' />
+                    </p>
+                  :
+                    <p>
+                      <HiOutlineXMark className='text-2xl text-red font-bold' />
+                    </p>
+                }
               </div>
             </li>
-            <li className='pl-4 border-b border-dashed border-b-gray-300 py-4'>
-              <div className='flex justify-between items-center'>
-                <p className=' leading-6 text-sm'>
-                  Peyton Manning retired after winning Super Bowl XLIX.
-                  <span className=' italic font-light block text-gray-400 text-xs'>
-                    The correct answer is <span className='font-semibold text-green'>True</span>.
-                    You answered <span className='font-light text-orange'>False</span>.
-                  </span>
-                </p>
-                <HiOutlineXMark className='text-2xl text-red font-bold' />
-              </div>
-            </li> */}
+            ))}
           </ol>
           <NavLink to="/quiz" className="text-xl underline text-blue-900 font-semibold text-center">
              <h1 className="text-center">PLAY AGAIN</h1>
