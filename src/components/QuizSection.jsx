@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import questions from '../data/questions.json'
+import { useNavigate } from 'react-router-dom'
 
 const QuizSection = () => {
   const [questionIndices, setQuestionIndices] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState();
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     localStorage.clear();
@@ -19,6 +22,25 @@ const QuizSection = () => {
     setCurrentQuestionIndex(0);
   }, []);
 
+  function handleAnswer(answer) {
+    // Store the user's answer in localStorage
+    const questionIndex = questionIndices[currentQuestionIndex];
+    const question = questions.results[questionIndex].question;
+    localStorage.setItem(`answer_${currentQuestionIndex}`, JSON.stringify({
+      question: question,
+      answer: answer
+    }));
+
+    // After the user has answered, move on to the next question
+    const nextIndex = currentQuestionIndex + 1;
+    if (nextIndex < 10) {
+      setCurrentQuestionIndex(nextIndex);
+    } else {
+      navigate('/result')
+    }
+  }
+
+
   if (questionIndices.length === 0 || currentQuestionIndex === null) {
     return <div>Loading...</div>;
   }
@@ -30,7 +52,6 @@ const QuizSection = () => {
       <span className="absolute h-full w-screen bg-main bg-fixed bg-center bg-cover bg-no-repeat" />
       <div className=' min-h-screen flex items-center justify-center py-10 px-4'>
       {
-        // currentQuestion !== undefined && totalQuestions <= 10
         currentQuestion !== undefined
         ?
           (
@@ -54,10 +75,10 @@ const QuizSection = () => {
 
 
               <div className="flex items-center justify-center mb-6 gap-8">
-                <button className='bg-green px-5 py-2 rounded-md text-white text-xl '>
+                <button className='bg-green px-5 py-2 rounded-md text-white text-xl'  onClick={() => handleAnswer('True')} >
                   True
                 </button>
-                <button className='bg-orange px-5 py-2 rounded-md text-white text-xl'>
+                <button className='bg-orange px-5 py-2 rounded-md text-white text-xl' onClick={() => handleAnswer('False')} >
                   False
                 </button>
               </div>
